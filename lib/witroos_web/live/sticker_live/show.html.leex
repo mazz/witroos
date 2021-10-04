@@ -1,0 +1,37 @@
+<h1>Show Sticker</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, WitroosWeb.StickerLive.FormComponent,
+    id: @sticker.id,
+    title: @page_title,
+    action: @live_action,
+    sticker: @sticker,
+    return_to: Routes.sticker_show_path(@socket, :show, @sticker) %>
+<% end %>
+
+<ul>
+
+<div class="column">
+  <%= for url <- @sticker.image_urls do %>
+    <img src="<%= url %>" height="150"/>
+  <% end %>
+</div>
+  <li>
+    <strong>Basetitle:</strong>
+    <%= @sticker.basetitle %>
+  </li>
+
+  <li>
+    <strong>Localizedtitle:</strong>
+    <%= @sticker.localizedtitle %>
+  </li>
+
+  <li>
+    <strong>Language:</strong>
+    <%= @sticker.language %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.sticker_show_path(@socket, :edit, @sticker), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.sticker_index_path(@socket, :index) %></span>

@@ -1,0 +1,45 @@
+<h1>Listing Stickers</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, WitroosWeb.StickerLive.FormComponent,
+    id: @sticker.id || :new,
+    title: @page_title,
+    action: @live_action,
+    sticker: @sticker,
+    return_to: Routes.sticker_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Basetitle</th>
+      <th>Localizedtitle</th>
+      <th>Language</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="stickers">
+    <%= for sticker <- @stickers do %>
+      <tr id="sticker-<%= sticker.id %>">
+        <td>
+          <%= for url <- sticker.image_urls do %>
+            <img src="<%= url %>" height="250" width="200"/>
+          <% end %>
+        </td>
+        <td><%= sticker.basetitle %></td>
+        <td><%= sticker.localizedtitle %></td>
+        <td><%= sticker.language %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.sticker_show_path(@socket, :show, sticker) %></span>
+          <span><%= live_patch "Edit", to: Routes.sticker_index_path(@socket, :edit, sticker) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: sticker.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Sticker", to: Routes.sticker_index_path(@socket, :new) %></span>
