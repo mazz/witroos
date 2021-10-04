@@ -22,10 +22,10 @@
   </thead>
   <tbody id="stickers">
     <%= for sticker <- @stickers do %>
-      <tr id="sticker-<%= sticker.id %>">
+      <tr id="sticker-{sticker.id}">
         <td>
           <%= for url <- sticker.image_urls do %>
-            <img src="<%= url %>" height="250" width="200"/>
+            <img src={url} height="250" width="200"/>
           <% end %>
         </td>
         <td><%= sticker.basetitle %></td>
