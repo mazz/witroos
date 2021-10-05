@@ -17,7 +17,7 @@
 
 - git checkout the `s3-uploads` branch
 
-*NOTE: the `s3-uploads` branch requires Phoenix 1.6.x and uses esbuild+tailwind+alpineJS*
+*NOTE: the `s3-uploads` branch requires Phoenix 1.6.x, OTP 24.x and uses esbuild+tailwind+alpineJS*
 
 - > `mix deps.get`
 - > `cd assets; npm install; cd ..`
@@ -27,7 +27,6 @@
 ### Open Stickers Route:
 - in your web browser: `http://localhost:4000/stickers`
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
 ## Learn more
 
