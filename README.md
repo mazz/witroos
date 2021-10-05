@@ -1,13 +1,31 @@
 # Witroos
 
-To start your Phoenix server:
+## Get Started
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+### Local LiveView Uploads
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+- git checkout the `master` branch
+
+*NOTE: the `master` branch requires Phoenix 1.5.x and uses webpack*
+
+- > `mix deps.get`
+- > `cd assets; npm install; cd ..`
+- > `mix ecto.reset`
+- > `mix phx.server`
+
+### S3 LiveView Uploads
+
+- git checkout the `s3-uploads` branch
+
+*NOTE: the `s3-uploads` branch requires Phoenix 1.6.x and uses esbuild+tailwind+alpineJS*
+
+- > `mix deps.get`
+- > `cd assets; npm install; cd ..`
+- > `mix ecto.reset`
+- > `mix phx.server`
+
+### Open Stickers Route:
+- in your web browser: `http://localhost:4000/stickers`
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
