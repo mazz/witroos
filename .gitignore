@@ -10,6 +10,9 @@
 # Where 3rd-party dependencies like ExDoc output generated docs.
 /doc/
 
+# Ignore priv/static where compiled static assets go
+/priv/static/
+
 # Ignore .fetch files in case you like to edit your project deps locally.
 /.fetch
 
