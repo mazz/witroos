@@ -19,6 +19,14 @@ config :witroos, WitroosWeb.Endpoint,
   pubsub_server: Witroos.PubSub,
   live_view: [signing_salt: "HOoJMYJw"]
 
+config :esbuild,
+  version: "0.12.18",
+  default: [
+    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

@@ -24,7 +24,7 @@ defmodule WitroosWeb.Endpoint do
     at: "/",
     from: :witroos,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt uploads)
+    only: ~w(assets css fonts images js favicon.ico robots.txt uploads)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

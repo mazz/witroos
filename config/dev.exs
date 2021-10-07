@@ -21,11 +21,14 @@ config :witroos, WitroosWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
+    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npx: [
+      "tailwindcss",
+      "--input=css/app.css",
+      "--output=../priv/static/assets/app.css",
+      "--postcss",
+      "--watch",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
@@ -58,7 +61,7 @@ config :witroos, WitroosWeb.Endpoint,
 config :witroos, WitroosWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/[^uploads].*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/(?!uploads).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/witroos_web/(live|views)/.*(ex)$",
       ~r"lib/witroos_web/templates/.*(eex)$"

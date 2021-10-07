@@ -1,3 +1,5 @@
+
+<html>
 <h2><%= @title %></h2>
 
 <%= f = form_for @changeset, "#",
@@ -30,11 +32,11 @@
         <%= live_img_preview entry, height: 150 %>
       </div>
       <div class="column">
-        <progress max="100" value="<%= entry.progress %>" />
+        <progress max="100" value={entry.progress} />
       </div>
       <div class="column">
-        <a href="#" phx-click="cancel-entry" phx-value-ref="<%= entry.ref %>"
-           phx-target="<%= @myself %>">
+        <a href="#" phx-click="cancel-entry" phx-value-ref={entry.ref}
+           phx-target={@myself}>
           cancel
         </a>
       </div>
@@ -42,4 +44,5 @@
   <% end %>
 
   <%= submit "Save", phx_disable_with: "Saving..." %>
-</form>
+
+</html>
